@@ -1,6 +1,6 @@
 # Comandos de criação do novo ambiente... 
 
-### Listar todas as imagens que contenham a palavra ubuntu
+### (opcional) Listar todas as imagens que contenham a palavra ubuntu
 
 ```
 aws ec2 describe-images --owners amazon --filters "Name=architecture,Values=x86_64" "Name=root-device-type,Values=ebs" "Name=virtualization-type,Values=hvm" --query 'Images[?contains(Name, `ubuntu`) ].[ImageId,Name]' --output table 
@@ -94,12 +94,12 @@ sudo apt install -y ansible
 
 ```
 
-#### Clona o repo
+#### Clone o SEU repositório (não o do professor...)
 
 ```
-git clone -b ansible_version https://github.com/<SEU USER>/2024-puc-git.git
+git clone -b ansible_version https://github.com/<SEU USER>/2024-puc-devops.git
 
-cd 2024-puc-git
+cd 2024-puc-devops
 
 ```
 #### Instalar o docker usando o ansible 

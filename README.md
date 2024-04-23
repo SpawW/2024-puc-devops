@@ -1,8 +1,11 @@
-# 2024-puc-git
+# 2024-puc-devops
 
-Aula sobre GIT e GIT FLOW
+Aula 02 - Gitflow e automação
 
 Passos:
-  - Fork deste repositório
+  - Fork deste repositório (branch main)
+
   - Clone para a AWS a partir do EC2 na aws
-    - Criem o ambiente: [create-ec2.md](./create-ec2.md)
+    - Criem um EC2 para servir de servidor o ambiente: [create-dev-machine.md](./create-dev-machine.md)
+
+    - Comando que executa tudo em sequencia: wget -O - https://github.com/SpawW/2024-puc-devops/cria_ec2.sh | bash

@@ -1,0 +1,42 @@
+---
+- name: Instalar Docker
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Atualizar cache de pacotes
+      apt:
+        update_cache: yes
+
+    - name: Instalar pacotes necessários para adicionar repositório HTTPS
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+
+    - name: Adicionar chave GPG oficial do Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Adicionar repositório do Docker
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
+        state: present
+
+    - name: Atualizar cache de pacotes após adicionar repositório do Docker
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Instalar Docker
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: Adicionar usuário ubuntu ao grupo docker
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
